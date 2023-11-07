@@ -1,13 +1,18 @@
 ---
 # tasks file for sample_role
-- name: Add epel-release repo
-  yum:
-    name: epel-release
-    state: present
-- name: Install nginx
-  yum:
-    name: nginx
-    state: present
+- name: Install items on RedHat
+  block:
+    - name: Add epel-release repo
+      yum:
+        name: epel-release
+        state: present
+        update_cache: true
+    - name: Install nginx
+      yum:
+        name: nginx
+        state: present
+        update_cache: true
+  when: ansible_os_family == 'RedHat'
 
 - name: Copy landing page and image
   # copy:
