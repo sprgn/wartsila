@@ -1,9 +1,28 @@
 ---
 # tasks file for sample_role
+- name: Add epel-release repo
+  yum:
+    name: epel-release
+    state: present
 - name: Install nginx
-  apt:
+  yum:
     name: nginx
     state: present
+
+- name: Copy landing page and image
+  # copy:
+  #   src: index.html
+  #   dest: /usr/share/nginx/html/index.html
+  copy:
+    src: "{{ item }}"
+    dest: /usr/share/nginx/html/
+  with_fileglob: "files/*"
+
+# - name: Insert Index Page
+#   copy:
+#     src: meme1.jpg
+#     dest: /usr/share/nginx/html/meme1.jpg
+
 - name: ensure nginx is started and eanbled
   service:
     name: nginx
