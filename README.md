@@ -26,3 +26,8 @@ Bonus points for
 
 Please review the instructions and feel free to reach out with any questions.   
 ** Note ** systemd should manage the running container
+
+# Dev environment Setup
+1. https://docs.ansible.com/ansible/latest/installation_guide/installation_distros.html#installing-ansible-on-ubuntu
+2. https://ansible.readthedocs.io/projects/molecule/installation/
+3. sudo apt install docker.io
