@@ -1,2 +1,11 @@
 ---
 # tasks file for sample_role
+- name: Install nginx
+  apt:
+    name: nginx
+    state: present
+- name: ensure nginx is started and eanbled
+  service:
+    name: nginx
+    state: started
+    enabled: true
