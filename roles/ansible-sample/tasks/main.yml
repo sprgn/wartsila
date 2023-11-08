@@ -22,7 +22,7 @@
   with_fileglob: "files/*"
   become: true
 
-- name: ensure nginx is started and eanbled
+- name: Make sure nginx is enabled, started and maintained by systemd.
   service:
     name: nginx
     state: started
