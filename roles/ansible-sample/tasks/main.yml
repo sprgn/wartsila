@@ -13,6 +13,7 @@
         state: present
         update_cache: true
   when: ansible_os_family == 'RedHat'
+  become: true
 
 - name: Copy landing page and image
   # copy:
@@ -22,6 +23,7 @@
     src: "{{ item }}"
     dest: /usr/share/nginx/html/
   with_fileglob: "files/*"
+  become: true
 
 # - name: Insert Index Page
 #   copy:
@@ -33,3 +35,4 @@
     name: nginx
     state: started
     enabled: true
+  become: true
