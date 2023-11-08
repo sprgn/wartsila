@@ -1,0 +1,9 @@
+---
+- name: Prepare application container image
+  hosts: dockerhost
+  vars:
+    image: "{{ app_image }}"
+    image_tag: "{{ app_image_version }}"
+  roles:
+    - wartsila-docker-role
+    - ansible-sample
