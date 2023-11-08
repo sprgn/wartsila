@@ -18,6 +18,8 @@ VOLUME [ "/sys/fs/cgroup" ]
 CMD ["/usr/sbin/init"]
 # End Centos instructions for systemd container
 
+EXPOSE 80
+
 # https://molecule.readthedocs.io/en/latest/examples.html#docker-with-non-privileged-user
 # Create `ansible` user with sudo permissions and membership in `DEPLOY_GROUP`
 ENV ANSIBLE_USER=ansible SUDO_GROUP=wheel DEPLOY_GROUP=deployer
