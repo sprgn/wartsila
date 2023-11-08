@@ -1,0 +1,21 @@
+---
+- name: create temp directory for build
+  ansible.builtin.tempfile:
+    state: directory
+  register: build_dir
+
+- name: generate dockerfile
+  ansible.builtin.template:
+    src: Dockerfile
+    dest: '{{ build_dir.path }}/Dockerfile'
+
+- name: build wartsila image
+  ansible.builtin.docker_image:
+    name: "{{ image }}"
+    tag: "{{ image_tag }}"
+    source: build
+    state: present
+    force_source: true
+    build:
+      path: "{{ build_dir.path }}"
+      pull: yes
